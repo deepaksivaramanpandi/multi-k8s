@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+    name: deepakpandi-org-tls
+spec:
+    secretName: deepakpandi-org
+    issuerRef:
+        name: letsencrypt-prod
+        kind: ClusterIssuer
+    commonName: deepakpandi.org
+    dnsNames:
+        - deepakpandi.org
+        - www.deepakpandi.org
+    acme:
+        config:
+            - http01:
+                ingresClass: nginx
+              domains:
+                - deepakpandi.org
+                - www.deepakpandi.org
+
